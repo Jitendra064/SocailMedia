@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import MyPost from "../pages/MyPost";
 import { storagePost } from "../storageOperations/storageOperations";
 import DemoPost from "./DemoPost";
 
@@ -9,13 +8,23 @@ const AllPost = (props) => {
     <>
       {/* add all posts */}
 
-      {props.setSelectPostArray ? (
+      {/* {props.setSelectPostArray ? (
         storagePost().map((e, i) => (
           <DemoPost key={i} data={e} index={i} setUpdate={setUpdate} />
         ))
       ) : (
         <MyPost setUpdate={update} />
-      )}
+      )} */}
+
+      {storagePost().map((e, i) => (
+        <DemoPost
+          key={i}
+          data={e}
+          index={i}
+          setUpdate={setUpdate}
+          setA={true}
+        />
+      ))}
     </>
   );
 };

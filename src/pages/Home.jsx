@@ -1,27 +1,36 @@
-/* eslint-disable no-eval */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import Navbar from "../compoents/Navbar";
 import MyPost from "./MyPost";
 import AllPost from "../compoents/AllPost";
 import LikePost from "../compoents/LikePost";
+import SavePost from "../compoents/SavePost";
+import AddPost from "./AddPost";
+import Profile from "../compoents/Profile";
 
-const Home = () => {
-  const [showPost, setShowPost] = useState(false);
+const Home = (props) => {
+  const [showPost, setShowPost] = useState(true);
   const [showLikePost, setShowLikePost] = useState(false);
-  const [showMyPost, setShowMyPost] = useState(false);
-  const [showAllPost, setShowAllPost] = useState(true);
+  const [ShowMyPost, setMyPost] = useState(false);
+  const [savePost, setSavePost] = useState(false);
+  const [addPost, setAddPost] = useState(false);
+  const [profile, setProfile] = useState(false);
+  // Define setUpdate if needed
+  // const [update, setUpdate] = useState(0);
 
   const varify = () => {
     let valid = false;
-    if (showLikePost) {
+    if (showPost) {
       valid = true;
-    } else if (showMyPost) {
+    } else if (ShowMyPost) {
       valid = true;
-    } else if (showPost) {
+    } else if (showLikePost) {
       valid = true;
-    } else if (showAllPost) {
-      setShowPost(true);
+    } else if (addPost) {
+      valid = true;
+    } else if (profile) {
+      valid = true;
+    } else if (savePost) {
+      valid = true;
     }
     return valid;
   };
@@ -30,38 +39,28 @@ const Home = () => {
     if (!localStorage.getItem("likeData")) {
       localStorage.setItem("likeData", "[]");
     }
-  });
-  useEffect(() => {});
+  }); // Pass an empty dependency array to execute the effect only once
 
   return (
     <>
       <Navbar
+        setProfile={setProfile}
+        setMyPost={setMyPost}
         setShowPost={setShowPost}
         setShowLikePost={setShowLikePost}
-        setShowMyPost={setShowMyPost}
+        setSavePost={setSavePost}
+        setAddPost={setAddPost}
       />
 
-      <div
-        className=" container-fluid"
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-around",
-          flexWrap: "wrap",
-          alignItems: "stretch",
-        }}
-      >
-        {" "}
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-          {varify() && showLikePost && <LikePost ShowMyPost={showPost} />}
-          {varify() && showMyPost && <MyPost ShowMyPost={showPost} />}
-          {varify() && showPost && <AllPost setSelectPostArray={showPost} />}
-        </div>
-        {/* {showPost ? (
-          <MyPost ShowMyPost={showPost} />
-        ) : (
-          <AllPost setSelectPostArray={showPost} />
-        )} */}
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 container-fluid">
+        {varify() && showPost && <AllPost setSelectPostArray={showPost} />}
+        {varify() && ShowMyPost && <MyPost ShowMyPost={ShowMyPost} />}
+        {varify() && savePost && <SavePost />}
+        {varify() && showLikePost && <LikePost />}
+        {varify() && addPost && (
+          <AddPost setShowPost={setShowPost} setAddPost={setAddPost} />
+        )}
+        {varify() && profile && <Profile />}
       </div>
     </>
   );

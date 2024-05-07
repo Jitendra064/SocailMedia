@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { loggedInUser } from "../storageOperations/storageOperations";
 import { useNavigate } from "react-router-dom";
 
-const AddPost = () => {
+const AddPost = (props) => {
   let navigate = useNavigate();
   const [image, setImage] = useState("");
   const [text, setText] = useState("");
@@ -28,7 +28,9 @@ const AddPost = () => {
 
       setImage("");
       setText("");
-      navigate("/");
+
+      props.setShowPost(true);
+      props.setAddPost(false);
     }
   }
   // console.log(PostArray);

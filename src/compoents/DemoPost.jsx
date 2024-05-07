@@ -10,7 +10,7 @@ import {
 const DemoPost = (props) => {
   const [commentSection, setCommentSection] = useState(false);
   const [likeSection, setLikeSection] = useState(false);
-  const [likeCount, setLikeCount] = useState(props.data.like);
+  const [likeCount, setLikeCount] = useState(props.data?.like);
   const [ShowDropdown, setShowDropdown] = useState(false);
 
   function commentHandler() {
@@ -53,12 +53,14 @@ const DemoPost = (props) => {
   }
 
   function threeDocts() {
-    if (storagePost()[props.index].username === loggedInUser().name) {
+    // yaha muje ager three docts par click karke ye dikha raha hu ager me kisi post pe click karta hu to ager vo user ki post hai to kya dropdown dikhau ager vo ager vo user ki post nahi hai to kya dropdown dikhau
+    if (props.data.username === loggedInUser().name) {
+      setShowDropdown(true);
+    } else if (storagePost()[props.index].username === loggedInUser().name) {
       setShowDropdown(true);
     } else {
       setShowDropdown(false);
     }
-    console.log(props.index);
   }
 
   function SaveHandler() {
@@ -71,10 +73,42 @@ const DemoPost = (props) => {
 
   function DeleteHandler() {
     let storedData = JSON.parse(localStorage.getItem("posts"));
-    storedData.splice(props.index, 1);
+    const FilterArr = storagePost().filter(
+      (e) => e.username === loggedInUser().name
+    );
+
+    // props.A  == ye bta hai ki me kis sabhi post par ager click karta hu to  usme se kisi post ka index kya hota
+    // props.B == ye bta hai ki me kis khud ki  post  ki hui ager kisi post par click karta hu to  usme se kisi post ka index kya hota
+    if (props.setA) {
+      storedData.splice(props.index, 1);
+      props.setUpdate(1);
+    } else if (props.setB) {
+      props.setSpliceIndex(props.index);
+      /*
+     
+     
+     */
+      let deletepost = FilterArr[props.index];
+      // console.log(storedData);
+
+      // yaha me check kar raha hu ki ager jo data me delete kar rha hu ager vo localstorage me hai to usko delete kar do
+
+      for (var i = 0; i < storedData.length; i++) {
+        if (JSON.stringify(storedData[i]) === JSON.stringify(deletepost)) {
+          // console.log(i);
+          storedData.splice(i, 1);
+          // console.log(storedData);
+        }
+      }
+      props.setUpdate(1);
+    }
+
     localStorage.setItem("posts", JSON.stringify(storedData));
-    props.setUpdate(1);
   }
+
+  /*
+    
+  */
 
   useEffect(() => {
     props.setUpdate(0);
