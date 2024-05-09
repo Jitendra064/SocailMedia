@@ -68,7 +68,19 @@ const DemoPost = (props) => {
   }
 
   function EditHandler() {
-    console.log("EditHandler");
+    let storedData = JSON.parse(localStorage.getItem("posts"));
+    const FilterArr = storagePost().filter(
+      (e) => e.username === loggedInUser().name
+    );
+    if (props.setA) {
+      console.log(storedData[props.index]);
+      // console.log(props.EditDataHome(storedData[props.index]));
+    } else if (props.setB) {
+      // console.log(props.EditDataHome(FilterArr[props.index]));
+      props.setAddPostTrue(true);
+      props.editMyPostIndex(props.index);
+      // console.log(FilterArr[props.index]);
+    }
   }
 
   function DeleteHandler() {
@@ -118,9 +130,15 @@ const DemoPost = (props) => {
   function AddComment() {
     setCommentSection(false);
   }
+
+  function hideHandler() {
+    // console.log(props.index);
+    // console.log(storagePost()[props.index]);
+    console.log("hide");
+  }
   return (
     <>
-      <div className="  PostCard">
+      <div className="PostCard ">
         <div className="card mx-2 mt-2 ">
           <div
             style={{
@@ -197,12 +215,12 @@ const DemoPost = (props) => {
                       Edit Post
                     </p>
                   ) : (
-                    <p className="dropdown-item">
+                    <p className="dropdown-item" onClick={hideHandler}>
                       <img
                         width="24"
                         height="24"
-                        src="https://img.icons8.com/material/24/hide--v1.png"
-                        alt="hide--v1"
+                        src="https://img.icons8.com/ios-glyphs/30/visible--v1.png"
+                        alt="visible--v1"
                         className="mx-2"
                       />
                       Hide Post

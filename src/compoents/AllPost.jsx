@@ -4,6 +4,8 @@ import DemoPost from "./DemoPost";
 
 const AllPost = (props) => {
   const [update, setUpdate] = useState(0);
+  const [EditData, setEditData] = useState({});
+
   return (
     <>
       {/* add all posts */}
@@ -23,6 +25,7 @@ const AllPost = (props) => {
           index={i}
           setUpdate={setUpdate}
           setA={true}
+          setEditData={setEditData}
         />
       ))}
     </>

@@ -78,7 +78,6 @@ const Signup = () => {
       newUser.name = inputName;
       newUser.Cpassword = inputCPassword;
       localStorage.setItem("userData", JSON.stringify(user.concat(newUser)));
-      alert("Welcome to Login Successfully");
       navigate("/login");
     } else {
       alert("something went wrong");

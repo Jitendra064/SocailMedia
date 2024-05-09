@@ -22,6 +22,7 @@ export const publicRoutes = [
 //     path: "/",
 //     element: Home,
 //   },
+
 //   {
 //     name: "addPost",
 //     path: "/addPost",

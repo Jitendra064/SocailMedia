@@ -22,7 +22,7 @@ const AppRouter = () => {
           privateRouter.map((e, i) => (
             <Route path={e.path} element={<e.element />} key={i}></Route>
           ))} */}
-        {loggedInUser && <Route path="/" element={<Home />}></Route>}
+        {loggedInUser() && <Route path="/" element={<Home />}></Route>}
         <Route path="*" element={<Login />}></Route>
       </Routes>
       ;

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { loggedInUser } from "../storageOperations/storageOperations";
 
-const AddPost = (props) => {
+const EditPost = (props) => {
   const [image, setImage] = useState("");
   const [text, setText] = useState("");
+  const [index, setIndex] = useState("");
 
-  // let EditPost = props.EditDataHome;
+  console.log(props.EditDataMyPost);
+
+  let EditPost = props.EditDataMyPost;
   // console.log(props.EditDataHome);
   const EnterDataArray = {
     image: "",
@@ -14,7 +17,7 @@ const AddPost = (props) => {
     like: "",
     comments: [],
   };
-  function addPost() {
+  function updateHandler() {
     let data = JSON.parse(localStorage.getItem("posts"));
     if (image.length > 0 && text.length > 0) {
       EnterDataArray.image = image;
@@ -34,20 +37,14 @@ const AddPost = (props) => {
     }
   }
 
-  function updateHandler() {
-    // setImage(EditPost.image);
-    // setText(EditPost.text);
-  }
-
-  useEffect(() => {
-    if (!localStorage.getItem("posts")) {
-      localStorage.setItem("posts", "[]");
-    }
-  }, []);
+  //   function updateHandler() {
+  //     setImage(EditPost.image);
+  //     setText(EditPost.text);
+  //   }
 
   return (
     <>
-      <div className="card   m-3" style={{ width: "300px" }}>
+      <div className="card   m-3 mt-3" style={{ width: "300px" }}>
         <p
           className="fw-bold pb-1 "
           style={{ borderBottom: "1px solid #f0ebeb" }}
@@ -81,7 +78,7 @@ const AddPost = (props) => {
             rows="3"
             placeholder="Enter your Title . . . "
             onChange={(e) => setText(e.target.value)}
-            value={text}
+            value={EditPost.text}
           ></textarea>
         </div>
         <hr />
@@ -92,18 +89,15 @@ const AddPost = (props) => {
             rows="3"
             placeholder="Enter your Image link "
             onChange={(e) => setImage(e.target.value)}
-            value={image}
+            value={EditPost.image}
           ></textarea>
         </div>
         <button className="btn btn-success m-1" onClick={updateHandler}>
           Update
-        </button>
-        <button className="btn btn-primary m-1" onClick={addPost}>
-          Post
         </button>
       </div>
     </>
   );
 };
 
-export default AddPost;
+export default EditPost;
