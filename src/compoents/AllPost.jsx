@@ -5,19 +5,10 @@ import DemoPost from "./DemoPost";
 const AllPost = (props) => {
   const [update, setUpdate] = useState(0);
   const [EditData, setEditData] = useState({});
-
+  console.log(EditData);
+  console.log(update);
   return (
     <>
-      {/* add all posts */}
-
-      {/* {props.setSelectPostArray ? (
-        storagePost().map((e, i) => (
-          <DemoPost key={i} data={e} index={i} setUpdate={setUpdate} />
-        ))
-      ) : (
-        <MyPost setUpdate={update} />
-      )} */}
-
       {storagePost().map((e, i) => (
         <DemoPost
           key={i}

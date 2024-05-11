@@ -8,6 +8,7 @@ import Home from "../pages/Home";
 
 const AppRouter = () => {
   const [update, setUpdate] = useState(0);
+  console.log(update);
   return (
     <>
       <Routes>

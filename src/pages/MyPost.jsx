@@ -11,6 +11,8 @@ const MyPost = (props) => {
   const [editMyPostIndex, setEditMyPostIndex] = useState("");
   // const [removeHomeTrue, setRemoveHometTrue] = useState(false);
 
+  console.log(editMyPostIndex);
+  console.log(EditData);
   props.setupdatePost(AddPostTrue);
   props.setRemoveMyPostPage(!AddPostTrue);
   // props.editMyPostIndex(editMyPostIndex);

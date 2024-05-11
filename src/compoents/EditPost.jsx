@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { loggedInUser } from "../storageOperations/storageOperations";
 
 const EditPost = (props) => {
   const [image, setImage] = useState("");
   const [text, setText] = useState("");
-  const [index, setIndex] = useState("");
 
   console.log(props.EditDataMyPost);
 
