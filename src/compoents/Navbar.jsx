@@ -116,46 +116,6 @@ const Navbar = (props) => {
             </button>
           </div>
         </div>
-
-        <div
-          className=" mx-2"
-          style={{ border: "none", display: "flex", flexDirection: "col" }}
-        >
-          {/* <button className="btn btn-success mx-2" onClick={myPostHandler}>
-            MyPost
-          </button>
-          <button className="btn btn-info mx-2" onClick={savePostHandler}>
-            SavePost
-          </button>
-          <button className="btn btn-danger mx-2 " onClick={LikePost}>
-            LikePost
-          </button>
-          <div
-            className="d-flex border border-1 rounded"
-            style={{ cursor: "pointer" }}
-            onClick={profileHandler}
-          >
-            <img
-              width="40"
-              height="40"
-              src="https://img.icons8.com/plasticine/100/user.png"
-              alt="user"
-            />
-            <h6 className="text-dark mx-2 text-center pt-2">
-              {loggedInUser()?.name}
-            </h6>
-          </div>
-
-          <button
-            className="btn btn-primary mx-2  fw-bold"
-            onClick={AddPostHandler}
-          >
-            +CreatePost
-          </button>
-          <button className="btn btn-danger" onClick={logOut}>
-            Logout
-          </button> */}
-        </div>
       </nav>
     </>
   );

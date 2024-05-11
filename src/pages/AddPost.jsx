@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable jsx-a11y/img-redundant-alt */
+
+import React, { useEffect, useRef, useState } from "react";
 import { loggedInUser } from "../storageOperations/storageOperations";
 
 const AddPost = (props) => {
-  const [image, setImage] = useState("");
+  const useReff = useRef(null);
+  const [image, setImage] = useState(false);
   const [text, setText] = useState("");
 
   // let EditPost = props.EditDataHome;
@@ -16,14 +19,14 @@ const AddPost = (props) => {
   };
   function addPost() {
     let data = JSON.parse(localStorage.getItem("posts"));
-    if (image.length > 0 && text.length > 0) {
-      EnterDataArray.image = image;
+    if (image.length !== "" && text.length > 0) {
+      EnterDataArray.image = URL.createObjectURL(image);
       EnterDataArray.text = text;
       EnterDataArray.username = loggedInUser().name;
 
       localStorage.setItem(
         "posts",
-        JSON.stringify(data.concat(EnterDataArray))
+        JSON.stringify([EnterDataArray].concat(data))
       );
 
       setImage("");
@@ -34,9 +37,18 @@ const AddPost = (props) => {
     }
   }
 
-  function updateHandler() {
-    // setImage(EditPost.image);
-    // setText(EditPost.text);
+  function resetData() {
+    setImage("");
+    setText("");
+  }
+  function HandleImageClick() {
+    useReff.current.click();
+  }
+  function UploadHandler(e) {
+    const file = e.target.files[0];
+    console.log(file);
+
+    setImage(e.target.files[0]);
   }
 
   useEffect(() => {
@@ -47,7 +59,7 @@ const AddPost = (props) => {
 
   return (
     <>
-      <div className="card   m-3" style={{ width: "300px" }}>
+      <div className="card  m-3" style={{ width: "300px" }}>
         <p
           className="fw-bold pb-1 "
           style={{ borderBottom: "1px solid #f0ebeb" }}
@@ -69,7 +81,7 @@ const AddPost = (props) => {
           />
         </p>
 
-        <div className="mb-1">
+        <div>
           <textarea
             style={{
               borderBottom: "1px solid #f0ebeb",
@@ -77,26 +89,41 @@ const AddPost = (props) => {
               outline: "none",
               resize: "none",
             }}
-            cols="37"
-            rows="3"
+            cols="36"
+            rows="2"
             placeholder="Enter your Title . . . "
             onChange={(e) => setText(e.target.value)}
             value={text}
           ></textarea>
         </div>
-        <hr />
-        <div>
-          <textarea
-            style={{ border: "0", outline: "none", resize: "none" }}
-            cols="37"
-            rows="3"
-            placeholder="Enter your Image link "
-            onChange={(e) => setImage(e.target.value)}
-            value={image}
-          ></textarea>
+
+        <div onClick={HandleImageClick}>
+          {image ? (
+            <img
+              src={URL.createObjectURL(image)}
+              alt=""
+              width="100%"
+              className="rounded"
+            />
+          ) : (
+            <div className="text-center py-4">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-_0L43nuwVrTGUFBXQoYee_Z52wzRphMHYg&s"
+                alt="Choose Image "
+                width="50px"
+                style={{ cursor: "pointer" }}
+              />
+            </div>
+          )}
+          <input
+            type="file"
+            ref={useReff}
+            style={{ display: "none" }}
+            onChange={UploadHandler}
+          />
         </div>
-        <button className="btn btn-success m-1" onClick={updateHandler}>
-          Update
+        <button className="btn btn-danger m-1" onClick={resetData}>
+          Reset
         </button>
         <button className="btn btn-primary m-1" onClick={addPost}>
           Post

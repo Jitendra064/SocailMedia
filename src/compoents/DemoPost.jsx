@@ -69,9 +69,9 @@ const DemoPost = (props) => {
 
   function EditHandler() {
     let storedData = JSON.parse(localStorage.getItem("posts"));
-    const FilterArr = storagePost().filter(
-      (e) => e.username === loggedInUser().name
-    );
+    // const FilterArr = storagePost().filter(
+    //   (e) => e.username === loggedInUser().name
+    // );
     if (props.setA) {
       console.log(storedData[props.index]);
       // console.log(props.EditDataHome(storedData[props.index]));
