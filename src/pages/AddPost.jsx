@@ -45,8 +45,7 @@ const AddPost = (props) => {
     useReff.current.click();
   }
   function UploadHandler(e) {
-    const file = e.target.files[0];
-    console.log(file);
+    // const file = e.target.files[0];
 
     setImage(e.target.files[0]);
   }
@@ -59,27 +58,35 @@ const AddPost = (props) => {
 
   return (
     <>
-      <div className="card  m-3" style={{ width: "300px" }}>
-        <p
-          className="fw-bold pb-1 "
+      <div className="card  mx-3 mt-3 AddPostCard">
+        <div
+          className="d-flex justify-content-between align-item-center pt-2"
           style={{ borderBottom: "1px solid #f0ebeb" }}
         >
+          <p className="fw-bold pb-1 ">
+            <img
+              width="28"
+              height="28"
+              src="https://img.icons8.com/color/48/user.png"
+              alt="user"
+              className="mx-3"
+            />
+            {loggedInUser().name}
+            <img
+              className="mx-2"
+              width="11"
+              height="11"
+              src="https://img.icons8.com/small/16/FA5252/360-degrees.png"
+              alt="360-degrees"
+            />
+          </p>
           <img
-            width="28"
-            height="28"
-            src="https://img.icons8.com/color/48/user.png"
-            alt="user"
-            className="mx-3"
+            width="18"
+            height="18"
+            src="https://img.icons8.com/metro/26/refresh.png"
+            alt="refresh"
           />
-          {loggedInUser().name}
-          <img
-            className="mx-2"
-            width="13"
-            height="13"
-            src="https://img.icons8.com/small/16/FA5252/360-degrees.png"
-            alt="360-degrees"
-          />
-        </p>
+        </div>
 
         <div>
           <textarea
@@ -89,7 +96,7 @@ const AddPost = (props) => {
               outline: "none",
               resize: "none",
             }}
-            cols="36"
+            cols="35"
             rows="2"
             placeholder="Enter your Title . . . "
             onChange={(e) => setText(e.target.value)}

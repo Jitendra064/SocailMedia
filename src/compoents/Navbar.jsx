@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
   loggedInUser,
@@ -11,7 +10,6 @@ const Navbar = (props) => {
   function logOut() {
     removeLoggedInUser();
     navigate("/login");
-    // navigate("/");
   }
 
   function createFunction(a, b, c, d, e, f) {

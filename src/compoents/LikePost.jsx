@@ -14,7 +14,7 @@ const LikePost = () => {
         <DemoPost data={e} setUpdate={setUpdate} RedHeart={true} />
       ))}
 
-      <h1 className="text-danger"> No Post Like</h1>
+      <h1 className="text-danger"> No Post Like lo</h1>
     </>
   );
 };

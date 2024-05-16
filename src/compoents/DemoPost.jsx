@@ -9,6 +9,7 @@ import {
 
 const DemoPost = (props) => {
   const [commentSection, setCommentSection] = useState(false);
+  const [comments, setComments] = useState("");
   const [likeSection, setLikeSection] = useState(false);
   const [likeCount, setLikeCount] = useState(props.data?.like);
   const [ShowDropdown, setShowDropdown] = useState(false);
@@ -19,6 +20,11 @@ const DemoPost = (props) => {
     } else {
       setCommentSection(false);
     }
+  }
+
+  function commentexttHandler(e) {
+    console.log(e.target.value);
+    setComments(e.target.value);
   }
 
   function LikeHandler() {
@@ -330,6 +336,7 @@ const DemoPost = (props) => {
                   type="text"
                   placeholder=" Write Comments ... "
                   className=" border-0 border-bottom commentBox Post-comment"
+                  onChange={commentexttHandler}
                 />
                 <button
                   className="btn btn-primary btn-sm mx-2  "
@@ -337,6 +344,13 @@ const DemoPost = (props) => {
                 >
                   Add
                 </button>
+
+                <div className="w-100">
+                  <div className="my-1">
+                    <h6>{loggedInUser().name}</h6>
+                    <p>{comments}</p>
+                  </div>
+                </div>
               </div>
             )}
           </div>

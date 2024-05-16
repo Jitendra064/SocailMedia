@@ -9,10 +9,11 @@ const Login = ({ setUpdate }) => {
   const [inputPassword, setpassword] = useState("");
   const [submit, setsubmit] = useState(false);
   const [error, setError] = useState({});
+  const [update, setupdate] = useState(0);
 
+  // console.log(update)
   function submitHandler() {
     // Form validation check
-
     let varify = () => {
       let valid = true;
 
@@ -68,13 +69,16 @@ const Login = ({ setUpdate }) => {
     }
   }
 
+  // referes the page
+
   useEffect(() => {
+    setupdate(1);
     if (submit) {
       navigate("/");
     } else {
       navigate("/login");
     }
-  }, [submit, navigate]);
+  }, [submit, navigate, update]);
 
   return (
     <>
