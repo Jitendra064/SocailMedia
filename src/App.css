@@ -12,14 +12,15 @@
 
 }
 
-AddPostCard {
-
-  max-width: 500px;
+.AddCardCss {
+  width: 50%;
 }
 
-@media screen and (max-width: 575px) {
+
+
+/* @media screen and (max-width: 575px) {
   .PostCard {
     max-width: 100%;
 
   }
-}
+} */

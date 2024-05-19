@@ -14,6 +14,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import "./Home.css";
+import LikePost from "../compoents/LikePost";
 
 const Home = () => {
   const [showPost, setShowPost] = useState(true);
@@ -24,6 +25,7 @@ const Home = () => {
   const [profile, setProfile] = useState(false);
   const [EditDataHome, setEditDataHome] = useState({});
   const [editPostTrue, seteditPostTrue] = useState(false);
+  // const [width, setwidth] = useState("0");
 
   // Define setUpdate if needed
 
@@ -31,7 +33,7 @@ const Home = () => {
 
   const navigate = useNavigate();
 
-  let LoginUsers = JSON.parse(localStorage.getItem("userData"));
+  // let LoginUsers = JSON.parse(localStorage.getItem("userData"));
 
   function logOut() {
     removeLoggedInUser();
@@ -59,7 +61,7 @@ const Home = () => {
     createFunction(false, false, false, false, false, true);
   }
 
-  function LikePost() {
+  function LikePostHandler() {
     createFunction(false, false, false, true, false, false);
   }
 
@@ -106,8 +108,8 @@ const Home = () => {
     <>
       {/* MultiMedia  */}
 
-      <div className="w-100" id="gridSystem">
-        <div className=" main-col   " id="divOne">
+      <div className="" id="gridSystem">
+        <div className=" main-col  " id="divOne">
           <h3 className="main-h34 mx-2 " onClick={homeHandler}>
             MultiMedia
           </h3>
@@ -166,14 +168,14 @@ const Home = () => {
               />
               <span className="ManuText">Chat</span>
             </li>
-            <li onClick={LikePost}>
+            <li onClick={LikePostHandler}>
               <img
                 width="28"
                 height="28"
                 src="https://img.icons8.com/external-creatype-outline-colourcreatype/64/external-alarm-essential-ui-v2-creatype-outline-colourcreatype-2.png"
                 alt="external-alarm-essential-ui-v2-creatype-outline-colourcreatype-2"
               />
-              <span className="ManuText">Notifications</span>
+              <span className="ManuText">Notification</span>
             </li>
             <li onClick={AddPostHandler}>
               <img
@@ -217,8 +219,12 @@ const Home = () => {
         
         */}
 
-        <div className="" id="divTwo">
-          <div className=" d-flex main2-li mb-2">
+        <div
+          className=" container-fluid"
+          id="divTwo"
+          // style={{ marginLeft: width }}
+        >
+          {/* <div className=" d-flex main2-li mb-2">
             {LoginUsers.map((e, i) => (
               <div className="text-center mx-3  " style={{ cursor: "pointer" }}>
                 <img
@@ -231,9 +237,9 @@ const Home = () => {
                 <li>{LoginUsers[i].name}</li>
               </div>
             ))}
-          </div>
+          </div> */}
           <div>
-            <div className="row row-cols-1  row-cols-md-2 row-cols-lg-2 g-4 container-fluid w-100 justify-content-evenly ">
+            <div className="row row-cols-1  row-cols-md-2 row-cols-lg-2 g-4   justify-content-evenly ">
               {varify() && showPost && (
                 <AllPost
                   setSelectPostArray={showPost}
@@ -278,7 +284,7 @@ const Home = () => {
       
       
       
-      phone width ke liye jsx .
+        =====>>>> phone width ke liye jsx .
       
       
       */}

@@ -57,8 +57,8 @@ const AddPost = (props) => {
   }, []);
 
   return (
-    <>
-      <div className="card  mx-3 mt-3 AddPostCard">
+    <div style={{ minWidth: "83vw" }}>
+      <div className="card  mx-3 mt-4 AddCardCss">
         <div
           className="d-flex justify-content-between align-item-center pt-2"
           style={{ borderBottom: "1px solid #f0ebeb" }}
@@ -95,8 +95,9 @@ const AddPost = (props) => {
               border: "none",
               outline: "none",
               resize: "none",
+              width: "100%",
             }}
-            cols="35"
+            cols="30"
             rows="2"
             placeholder="Enter your Title . . . "
             onChange={(e) => setText(e.target.value)}
@@ -136,7 +137,7 @@ const AddPost = (props) => {
           Post
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -6,6 +6,7 @@ import {
   loggedInUser,
   storagePost,
 } from "../storageOperations/storageOperations";
+import { lightGreen } from "@mui/material/colors";
 
 const DemoPost = (props) => {
   const [commentSection, setCommentSection] = useState(false);
@@ -25,6 +26,14 @@ const DemoPost = (props) => {
   function commentexttHandler(e) {
     console.log(e.target.value);
     setComments(e.target.value);
+
+    // let storedData = JSON.parse(localStorage.getItem("posts"));
+
+    if (props.setA) {
+      console.log(props.index);
+    } else if (props.setB) {
+      console.log(props.index);
+    }
   }
 
   function LikeHandler() {
@@ -331,7 +340,7 @@ const DemoPost = (props) => {
             </div>
 
             {commentSection && (
-              <div>
+              <div className="w-100">
                 <input
                   type="text"
                   placeholder=" Write Comments ... "
@@ -346,9 +355,10 @@ const DemoPost = (props) => {
                 </button>
 
                 <div className="w-100">
-                  <div className="my-1">
-                    <h6>{loggedInUser().name}</h6>
-                    <p>{comments}</p>
+                  <div className="my-1 d-flex">
+                    <p className="fw-bold">{loggedInUser().name}</p> :{" "}
+                    {comments}
+                    {/* <p>{comments}</p> */}
                   </div>
                 </div>
               </div>
