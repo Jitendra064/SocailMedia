@@ -29,7 +29,7 @@ export default function Profile(props) {
 
   return (
     <div
-      className="gradient-custom-2 w-100"
+      className="gradient-custom-2 vw-100"
       style={{ backgroundColor: "#9de2ff" }}
     >
       <MDBContainer className="py-3 h-100 w-100">

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { storageUser } from "../storageOperations/storageOperations";
+import toast, { Toaster } from "react-hot-toast";
+// import "./Login.css";
 
 const Login = ({ setUpdate }) => {
   const navigate = useNavigate();
@@ -59,13 +61,14 @@ const Login = ({ setUpdate }) => {
             //  when user email or password right to make a new key
             localStorage.setItem("loggedInUser", JSON.stringify(user));
             setUpdate(1);
-
-            alert("welcome  to login to successfully");
           }
         }
         setemail("");
         setpassword("");
+        toast.success("Welcome to Login");
       }
+    } else {
+      toast.success("Something Wrong !");
     }
   }
 
@@ -82,43 +85,47 @@ const Login = ({ setUpdate }) => {
 
   return (
     <>
-      <div className="d-flex justify-content-center">
-        <div className="w-50 border border-2 px-2 py-3 mt-3 ">
-          <h3 className="text-center bg-danger text-light py-2">Login page</h3>
-          <form>
-            <div className="mb-3">
-              <label htmlFor="exampleInputEmail1" className="form-label">
-                Email address
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                onChange={(e) => setemail(e.target.value)}
-                name="email"
-                value={inputEmail}
-              />
-              <p className="text-danger">
-                {error.email?.errorStatus && error.email?.errorDetails}
-              </p>
-            </div>
-            <div className="mb-3">
-              <label htmlFor="exampleInputPassword1" className="form-label">
-                Password
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                id="exampleInputPassword1"
-                onChange={(e) => setpassword(e.target.value)}
-                name="password"
-                value={inputPassword}
-              />
-              <p className="text-danger">
-                {error.password?.errorStatus && error.password?.errorDetails}
-              </p>
-            </div>
+      <div
+        style={{
+          width: "100vw",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <div class="container46">
+          <Toaster position="top-center" reverseOrder={false} />
+          <div class="brand-logo"></div>
+          <div class="brand-title text-center">Instgram</div>
+          <div class="inputs">
+            <label>EMAIL</label>
+            <input
+              type="email"
+              placeholder="example@test.com"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              onChange={(e) => setemail(e.target.value)}
+              name="email"
+              value={inputEmail}
+            />
+
+            <p className="text-danger">
+              {error.email?.errorStatus && error.email?.errorDetails}
+            </p>
+            <label>PASSWORD</label>
+            <input
+              type="password"
+              placeholder="Min 6 charaters long"
+              id="exampleInputPassword1"
+              onChange={(e) => setpassword(e.target.value)}
+              name="password"
+              value={inputPassword}
+            />
+            <p className="text-danger">
+              {error.password?.errorStatus && error.password?.errorDetails}
+            </p>
+            <button type="submit" onClick={submitHandler}>
+              LOGIN
+            </button>
             <div className="my-3">
               <Link
                 className="text-primary "
@@ -128,14 +135,7 @@ const Login = ({ setUpdate }) => {
                 Create New Account
               </Link>
             </div>
-          </form>
-          <button
-            type="submit"
-            className="btn btn-primary text-center"
-            onClick={submitHandler}
-          >
-            Submit
-          </button>
+          </div>
         </div>
       </div>
     </>

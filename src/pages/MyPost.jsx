@@ -36,27 +36,29 @@ const MyPost = (props) => {
   console.log(AddPostTrue);
   return (
     <>
-      {filterArray.length > 0 ? (
-        filterArray.map((e, i) => (
-          <div className="col" key={i}>
-            <DemoPost
-              data={e}
-              setUpdate={setUpdate}
-              index={i}
-              postId={e.id} // Pass the post ID to DemoPost
-              setB={true}
-              setSpliceIndex={setSpliceIndex}
-              setEditData={setEditData}
-              setAddPostTrue={setAddPostTrue}
-              editMyPostIndex={setEditMyPostIndex}
-            />
-          </div>
-        ))
-      ) : (
-        <h1 className="text-center bg-light fw-bold text-danger">
-          There are no posts here
-        </h1>
-      )}
+      <div className="vw-100">
+        {filterArray.length > 0 ? (
+          filterArray.map((e, i) => (
+            <div className="col" key={i}>
+              <DemoPost
+                data={e}
+                setUpdate={setUpdate}
+                index={i}
+                postId={e.id} // Pass the post ID to DemoPost
+                setB={true}
+                setSpliceIndex={setSpliceIndex}
+                setEditData={setEditData}
+                setAddPostTrue={setAddPostTrue}
+                editMyPostIndex={setEditMyPostIndex}
+              />
+            </div>
+          ))
+        ) : (
+          <h1 className="text-center bg-light fw-bold text-danger">
+            There are no posts here
+          </h1>
+        )}
+      </div>
     </>
   );
 };

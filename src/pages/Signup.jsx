@@ -1,5 +1,8 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import "./Signup.css";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -61,7 +64,7 @@ const Signup = () => {
         localError.password.errorDetails = "Password must be required 6 char's";
         valid = false;
       }
-      if (!inputPassword === inputCPassword) {
+      if (inputPassword !== inputCPassword) {
         localError.Cpassword.errorStatus = true;
         localError.Cpassword.errorDetails = "password are not match";
         valid = false;
@@ -80,7 +83,7 @@ const Signup = () => {
       localStorage.setItem("userData", JSON.stringify(user.concat(newUser)));
       navigate("/login");
     } else {
-      alert("something went wrong");
+      toast.success("Something Went wrong!");
     }
   }
 
@@ -94,54 +97,46 @@ const Signup = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-center">
-        <div className="w-50 border border-2 px-2 py-3 mt-3 ">
-          <h3 className="text-center bg-danger text-light py-2">signUp page</h3>
-
-          <div className="mb-3">
-            <label htmlFor="exampleInputName" className="form-label">
-              Name
-            </label>
+      <div
+        style={{
+          width: "100vw",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <div className="container45">
+          <Toaster position="top-center" reverseOrder={false} />
+          {/* <div className="brand-logo"></div> */}
+          <div className="brand-title text-center">Signup</div>
+          <div className="inputs">
+            <label>NAME</label>
             <input
               type="text"
-              className="form-control"
-              id="exampleInputName"
+              placeholder="Enter Your Name"
               onChange={(e) => setName(e.target.value)}
               name="name"
-              placeholder="Enter Your Name"
+              aria-placeholder="Enter Your Name"
               value={inputName}
             />
             <p className="text-danger">
               {submit && error.name?.errorStatus && error.name?.errorDetails}
             </p>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">
-              Email address
-            </label>
+            <label>EMAIL</label>
             <input
               type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
+              placeholder="example@test.com"
               onChange={(e) => setemail(e.target.value)}
               name="email"
-              placeholder="Enter Your Email"
+              aria-placeholder="Enter Your Email"
               value={inputEmail}
             />
             <p className="text-danger">
               {submit && error.email?.errorStatus && error.email?.errorDetails}
             </p>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">
-              Password
-            </label>
+            <label>PASSWORD</label>
             <input
               type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              placeholder="Enter Your Password"
+              placeholder="Min 6 charaters long"
               onChange={(e) => setpassword(e.target.value)}
               name="password"
               value={inputPassword}
@@ -151,16 +146,10 @@ const Signup = () => {
                 error.password?.errorStatus &&
                 error.password?.errorDetails}
             </p>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputCPassword" className="form-label">
-              Confirm Password
-            </label>
+            <label>CONFIRM PASSWORD</label>
             <input
               type="password"
-              className="form-control"
-              id="exampleInputCPassword"
-              placeholder="Enter Your Confirm Password"
+              placeholder="Enter Confirm Password"
               onChange={(e) => setCpassword(e.target.value)}
               name="Cpassword"
               value={inputCPassword}
@@ -170,24 +159,13 @@ const Signup = () => {
                 error.Cpassword?.errorStatus &&
                 error.Cpassword?.errorDetails}
             </p>
-          </div>
-          <div className="my-3 ">
-            <Link
-              className="text-primary "
-              style={{ cursor: "pointer" }}
-              to="/login"
-            >
-              I have Already Accout
+            <button type="submit" onClick={SignupHandler}>
+              SIGNUP
+            </button>
+            <Link to="/login">
+              <p className="pb03 mt-2">I have Already Account</p>
             </Link>
           </div>
-
-          <button
-            type="submit"
-            className="btn btn-primary text-center"
-            onClick={SignupHandler}
-          >
-            SignUp
-          </button>
         </div>
       </div>
     </>

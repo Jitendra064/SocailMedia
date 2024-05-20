@@ -63,7 +63,7 @@ const AddPost = (props) => {
           className="d-flex justify-content-between align-item-center pt-2"
           style={{ borderBottom: "1px solid #f0ebeb" }}
         >
-          <p className="fw-bold pb-1 ">
+          <p className="fw-bold pb-1 " style={{ fontSize: "20px" }}>
             <img
               width="28"
               height="28"
@@ -85,6 +85,7 @@ const AddPost = (props) => {
             height="18"
             src="https://img.icons8.com/metro/26/refresh.png"
             alt="refresh"
+            className="mx-3"
           />
         </div>
 

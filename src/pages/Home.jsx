@@ -318,7 +318,7 @@ const Home = () => {
               src="https://img.icons8.com/ios/50/facebook-messenger--v1.png"
               alt="facebook-messenger--v1"
               className="mx-2"
-              onClick={LikePost}
+              onClick={LikePostHandler}
             />
           </div>
         </div>

@@ -6,7 +6,7 @@ import {
   loggedInUser,
   storagePost,
 } from "../storageOperations/storageOperations";
-import { lightGreen } from "@mui/material/colors";
+import toast, { Toaster } from "react-hot-toast";
 
 const DemoPost = (props) => {
   const [commentSection, setCommentSection] = useState(false);
@@ -128,6 +128,7 @@ const DemoPost = (props) => {
         }
       }
       props.setUpdate(1);
+      toast.success("Successfully toasted!");
     }
 
     localStorage.setItem("posts", JSON.stringify(storedData));
@@ -154,6 +155,7 @@ const DemoPost = (props) => {
   return (
     <>
       <div className="PostCard ">
+        <Toaster position="top-center" reverseOrder={false} />
         <div className="card mx-2 mt-2 ">
           <div
             style={{
@@ -162,7 +164,7 @@ const DemoPost = (props) => {
             }}
             className="mt-2"
           >
-            <p className="fw-bold pb-1 ">
+            <p className="fw-bold pb-1  " style={{ fontSize: "20px" }}>
               <img
                 width="28"
                 height="28"
