@@ -57,7 +57,7 @@ const AddPost = (props) => {
   }, []);
 
   return (
-    <div style={{ minWidth: "83vw" }}>
+    <div style={{ minWidth: "83vw", marginBottom: "7vh" }}>
       <div className="card  mx-3 mt-4 AddCardCss">
         <div
           className="d-flex justify-content-between align-item-center pt-2"

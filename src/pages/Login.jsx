@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { storageUser } from "../storageOperations/storageOperations";
+import {
+  loggedInUser,
+  storageUser,
+} from "../storageOperations/storageOperations";
 import toast, { Toaster } from "react-hot-toast";
 // import "./Login.css";
 
@@ -61,11 +64,12 @@ const Login = ({ setUpdate }) => {
             //  when user email or password right to make a new key
             localStorage.setItem("loggedInUser", JSON.stringify(user));
             setUpdate(1);
+            toast.success(`Welcome  ${loggedInUser().name}`);
           }
         }
         setemail("");
         setpassword("");
-        toast.success("Welcome to Login");
+        toast.success("Invalid Details !");
       }
     } else {
       toast.success("Something Wrong !");
