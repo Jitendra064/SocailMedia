@@ -9,16 +9,18 @@ const AllPost = (props) => {
   console.log(update);
   return (
     <>
-      {storagePost().map((e, i) => (
-        <DemoPost
-          key={i}
-          data={e}
-          index={i}
-          setUpdate={setUpdate}
-          setA={true}
-          setEditData={setEditData}
-        />
-      ))}
+      <div style={{ minWidth: "83vw", marginBottom: "7vh" }}>
+        {storagePost().map((e, i) => (
+          <DemoPost
+            key={i}
+            data={e}
+            index={i}
+            setUpdate={setUpdate}
+            setA={true}
+            setEditData={setEditData}
+          />
+        ))}
+      </div>
     </>
   );
 };
