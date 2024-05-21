@@ -150,7 +150,7 @@
 
 .Main3-header {
     align-items: justify;
-    background-color: #fff;
+    background-color: #fefefe;
     z-index: 100;
     width: 100%;
     position: fixed;
@@ -227,7 +227,10 @@
         width: 100%;
     }
 
+    #postCard {
+        width: 90%;
 
+    }
 
 
 
@@ -259,6 +262,25 @@
     .main3-p {
         font-size: 10px;
     }
+
+    #postCard {
+        min-width: 100%;
+        /* margin-bottom: 20px; */
+
+
+    }
+
+    .Main3-between {
+        margin-bottom: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+
+
 
 
 }

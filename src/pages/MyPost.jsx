@@ -36,22 +36,26 @@ const MyPost = (props) => {
   console.log(AddPostTrue);
   return (
     <>
-      <div className="vw-100">
+      <div
+        className="vw-85 row row-cols-1 row-cols-md-2 justify-content-evenly"
+        id="mypostcss"
+      >
         {filterArray.length > 0 ? (
           filterArray.map((e, i) => (
-            <div className="col" key={i}>
-              <DemoPost
-                data={e}
-                setUpdate={setUpdate}
-                index={i}
-                postId={e.id} // Pass the post ID to DemoPost
-                setB={true}
-                setSpliceIndex={setSpliceIndex}
-                setEditData={setEditData}
-                setAddPostTrue={setAddPostTrue}
-                editMyPostIndex={setEditMyPostIndex}
-              />
-            </div>
+            // <div key={i}>
+            <DemoPost
+              key={i}
+              data={e}
+              setUpdate={setUpdate}
+              index={i}
+              postId={e.id} // Pass the post ID to DemoPost
+              setB={true}
+              setSpliceIndex={setSpliceIndex}
+              setEditData={setEditData}
+              setAddPostTrue={setAddPostTrue}
+              editMyPostIndex={setEditMyPostIndex}
+            />
+            // </div>
           ))
         ) : (
           <h1 className="text-center bg-light fw-bold text-danger">

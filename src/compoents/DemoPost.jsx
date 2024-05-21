@@ -154,9 +154,9 @@ const DemoPost = (props) => {
   }
   return (
     <>
-      <div className="PostCard ">
-        <Toaster position="top-center" reverseOrder={false} />
-        <div className="card mx-2 mt-2 ">
+      <Toaster position="top-center" reverseOrder={false} />
+      <div className="col" id="postCard">
+        <div className="card">
           <div
             style={{
               display: "flex",
@@ -262,6 +262,7 @@ const DemoPost = (props) => {
               src={props.data?.image}
               className="img-fluid"
               alt="Image Cant loaded"
+              id="PostCardImage"
               width="100%"
             />
             <a href="#!">

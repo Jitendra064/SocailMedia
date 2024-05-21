@@ -4,12 +4,30 @@
   /* font-size: 20px; */
 }
 
-.PostCard {
-  flex: "1 0 auto";
-  max-width: 550px;
+body {
+  background: rgb(241, 242, 243);
+}
+
+#postCard {
+  margin: 10px 0px;
   display: flex;
   align-items: stretch;
 
+}
+
+
+
+/* .AllPostCss {
+  min-width: 100vw;
+  margin-bottom: 7vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+} */
+
+#PostCardImage {
+  width: 100vw;
+  /* height: 95vh; */
 }
 
 .AddCardCss {
@@ -18,9 +36,6 @@
 
 
 
-/* @media screen and (max-width: 575px) {
-  .PostCard {
-    max-width: 100%;
-
-  }
+/* @media screen and (max-width: 767px) {
+ 
 } */

@@ -9,7 +9,7 @@ const AllPost = (props) => {
   console.log(update);
   return (
     <>
-      <div style={{ minWidth: "83vw", marginBottom: "7vh" }}>
+      <div className=" w-100  row row-cols-1 row-cols-md-2 justify-content-evenly">
         {storagePost().map((e, i) => (
           <DemoPost
             key={i}

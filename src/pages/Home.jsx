@@ -219,32 +219,13 @@ const Home = () => {
         
         */}
 
-        <div
-          className=" container-fluid"
-          id="divTwo"
-          // style={{ marginLeft: width }}
-        >
-          {/* <div className=" d-flex main2-li mb-2">
-            {LoginUsers.map((e, i) => (
-              <div className="text-center mx-3  " style={{ cursor: "pointer" }}>
-                <img
-                  width="60"
-                  height="60"
-                  src="https://images.pexels.com/photos/977796/pexels-photo-977796.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  alt="user"
-                  className=" rounded-circle"
-                />
-                <li>{LoginUsers[i].name}</li>
-              </div>
-            ))}
-          </div> */}
+        <div className=" container-fluid" id="divTwo">
           <div>
-            <div className="row row-cols-1  row-cols-md-2 row-cols-lg-2 g-4   justify-content-evenly ">
+            <div>
               {varify() && showPost && (
                 <AllPost
                   setSelectPostArray={showPost}
                   setEditDataHome={setEditDataHome}
-                  // EditDataHome={EditDataHome}
                   setAddPost={setAddPost}
                 />
               )}
@@ -331,8 +312,8 @@ const Home = () => {
         
         
         */}
-        <div className="Main3-between  fs-1">
-          <div className="row row-cols-1  row-cols-md-2 row-cols-lg-2 g-4 container-fluid w-100 justify-content-evenly ">
+        <div className="px-2">
+          <div className="Main3-between fs-1">
             {varify() && showPost && (
               <AllPost
                 setSelectPostArray={showPost}
@@ -379,7 +360,8 @@ const Home = () => {
         
         
         */}
-        <div className="Main3-bottom  ">
+
+        <div className="Main3-bottom   ">
           <img
             width="28"
             height="28"
